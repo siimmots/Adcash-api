@@ -2,6 +2,8 @@
 
 ### This is my submission for the Adcash backend engineer internship
 
+#
+#### Added JSON postman collection for easier testing.
 
 <br/>
 <br/>
@@ -61,4 +63,4 @@ composer test
 ![picture](images/productDelete.png)
 
 ## Get all products of a certain category
-![picture](images/categoryProductsGet.png)
+![picture](images/categoryProducts.png)
