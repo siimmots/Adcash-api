@@ -4,7 +4,9 @@
 
 #
 #### Added JSON postman collection for easier testing.
-
+#
+### Disclaimer
+*If you are not seeing the images in the readMe and/or having the "Failed to load latest commit information." error, it may be caused by AdBlock or Google Chrome.*
 
 <br/>
 
