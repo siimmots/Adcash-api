@@ -20,8 +20,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-// TODO: add routes
-
 Route::get("/categories/products", [CategoryController::class, "getProducts"]);
 Route::apiResource("categories", CategoryController::class);
 Route::apiResource("products", ProductController::class);
