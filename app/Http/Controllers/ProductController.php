@@ -85,7 +85,7 @@ class ProductController extends Controller
             return response(["error" => $validator->errors(), "Validation Error!"],400);
         }
 
-        
+
         try{
             $product->update($data);
         } catch(Exception){
