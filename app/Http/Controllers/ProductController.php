@@ -85,8 +85,13 @@ class ProductController extends Controller
             return response(["error" => $validator->errors(), "Validation Error!"],400);
         }
 
-        $product->update($data);
-
+        
+        try{
+            $product->update($data);
+        } catch(Exception){
+            return response(["product" => new ProductResource($product), "message" => "Product update failed!"], 400);
+        }
+        
         return response(["product" => new ProductResource($product), "message" => "Product updated successfully!"], 200);
     }
 
@@ -99,8 +104,11 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         // In case of error -> 404 Not found is displayed
-
-        $product->delete();
+        try{
+            $product->delete();
+        } catch(Exception){
+            return response(["product" => new ProductResource($product), "message" => "Product not found!"], 404);
+        }
 
         return response(["message" => "Product deleted!"], 204);
     }

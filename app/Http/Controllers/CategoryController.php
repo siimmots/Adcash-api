@@ -6,6 +6,7 @@ use App\Http\Resources\CategoryResource;
 use App\Http\Resources\ProductResource;
 use App\Models\Category;
 use App\Models\Product;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -82,8 +83,12 @@ class CategoryController extends Controller
             return response(["error" => $validator->errors(), "Validation error!"],400);
         }
 
-        $category->update($data);
-
+        try{
+            $category->update($data);
+        } catch(Exception){
+            return response(["product" => new ProductResource($category), "message" => "Category update failed!"], 400);
+        }
+        
         return response(["category" => new CategoryResource($category), "message" => "Category updated successfully"], 200);
     }
 
@@ -96,8 +101,11 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         // In case of error -> 404 Not found is displayed
-
-        $category->delete();
+        try{
+            $category->delete();
+        } catch(Exception){
+            return response(["product" => new ProductResource($category), "message" => "Category not found!"], 404);
+        }
 
         return response(["message" => "Category deleted!"], 204);
     }
