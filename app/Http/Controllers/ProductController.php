@@ -42,7 +42,7 @@ class ProductController extends Controller
         ]);
 
         if ($validator->fails()){
-            return response(["error" => $validator->errors(), "Validation Error!"]);
+            return response(["error" => $validator->errors(), "Validation Error!"], 400);
         }
 
         $product = Product::create($data);
@@ -82,7 +82,7 @@ class ProductController extends Controller
         ]);
 
         if ($validator->fails()){
-            return response(["error" => $validator->errors(), "Validation Error!"]);
+            return response(["error" => $validator->errors(), "Validation Error!"],400);
         }
 
         $product->update($data);

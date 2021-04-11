@@ -39,7 +39,7 @@ class CategoryController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return response(["error" => $validator->errors(), "Validation error!"]);
+            return response(["error" => $validator->errors(), "Validation error!"],400);
         }
 
         $category = Category::create($data);
@@ -79,7 +79,7 @@ class CategoryController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return response(["error" => $validator->errors(), "Validation error!"]);
+            return response(["error" => $validator->errors(), "Validation error!"],400);
         }
 
         $category->update($data);
